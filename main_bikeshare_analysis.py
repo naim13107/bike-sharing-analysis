@@ -668,11 +668,11 @@ def evaluate_baseline_models(X, y):
         if name == 'Simple_Linear' and len(basic_features) > 0:
             X_basic = X[basic_features] if isinstance(X, pd.DataFrame) else X
             pipeline = Pipeline([('model', model)])
-            scores = cross_val_score(pipeline, X_basic, y, cv=5, scoring='r2')
+            scores = cross_val_score(pipeline, X_basic, y, cv=10, scoring='r2')  # CHANGED: cv=10
             baseline_results[name] = np.mean(scores)
         else:
             pipeline = Pipeline([('model', model)])
-            scores = cross_val_score(pipeline, X, y, cv=5, scoring='r2')
+            scores = cross_val_score(pipeline, X, y, cv=10, scoring='r2')  # CHANGED: cv=10
             baseline_results[name] = np.mean(scores)
     
     print("🎯 BASELINE MODEL R² SCORES:")
@@ -685,7 +685,7 @@ def evaluate_baseline_models(X, y):
 baseline_results = evaluate_baseline_models(X, y)
 
 # ===============================
-# 1️⃣4️⃣ FIXED PERFORMANCE METRICS WITH PCA COMPARISON
+# 1️⃣4️⃣ FIXED PERFORMANCE METRICS WITH 10-FOLD CROSS-VALIDATION
 # ===============================
 
 def generate_performance_tables(models, X_data, y_data, preprocessor, feature_set_name, pca_components=None):
@@ -719,8 +719,8 @@ def generate_performance_tables(models, X_data, y_data, preprocessor, feature_se
                 ('model', model)
             ])
         
-        # Perform k-fold cross validation
-        kf = KFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)
+        # Perform 10-fold cross validation - CHANGED: n_splits=10
+        kf = KFold(n_splits=10, shuffle=True, random_state=RANDOM_STATE)  # CHANGED: n_splits=10
         fold_metrics = {metric: [] for metric in metric_names}
         r2_scores = []
         
@@ -916,11 +916,11 @@ def compare_with_literature(your_r2_score):
         print("📈 GOOD: Solid performance comparable to established methods")
 
 # ===============================
-# 1️⃣8️⃣ UPDATED Main Model Evaluation Execution
+# 1️⃣8️⃣ UPDATED Main Model Evaluation Execution with 10-FOLD
 # ===============================
 
 print("\n" + "="*80)
-print("📊 GENERATING COMPREHENSIVE PERFORMANCE TABLES")
+print("📊 GENERATING COMPREHENSIVE PERFORMANCE TABLES (10-FOLD CV)")
 print("="*80)
 
 # Define model abbreviations for table consistency
@@ -946,7 +946,7 @@ key_models = {
 }
 
 # Generate performance tables for different scenarios
-print("\n🔍 Generating performance tables...")
+print("\n🔍 Generating performance tables with 10-fold cross-validation...")
 
 # Table 1: Original Features (No PCA)
 print("📋 Table 1: Original Features Performance...")
@@ -1011,20 +1011,20 @@ def create_regression_performance_table(results_dict, table_title, model_abbrevi
 
 # Generate corrected tables
 print("\n" + "="*80)
-print("📊 CORRECTED REGRESSION PERFORMANCE EVALUATION")
+print("📊 CORRECTED REGRESSION PERFORMANCE EVALUATION (10-FOLD CV)")
 print("="*80)
 
 # Table I: Original Features
 table1_corrected = create_regression_performance_table(
     results_original, 
-    "TABLE I. MODEL PERFORMANCE EVALUATION METRICS (CONSENSUS-SELECTED FEATURES)",
+    "TABLE I. MODEL PERFORMANCE EVALUATION METRICS (10-FOLD CROSS-VALIDATION)",
     model_abbreviations
 )
 
 # Table II: With PCA
 table2_corrected = create_regression_performance_table(
     results_pca,
-    "TABLE II. PERFORMANCE COMPARISON WITH PCA-BASED FEATURE OPTIMIZATION", 
+    "TABLE II. PERFORMANCE COMPARISON WITH PCA-BASED FEATURE OPTIMIZATION (10-FOLD CV)", 
     model_abbreviations
 )
 
@@ -1193,6 +1193,7 @@ print(f"  • scikit-learn: {sklearn.__version__}")
 print(f"  • SHAP: {shap.__version__}")
 print("  • Dataset: UCI Bike Sharing Dataset (Day)")
 print("  • Code available: https://github.com/yourusername/bike-sharing-analysis")
+print("  • Cross-Validation: 10-FOLD (Enhanced robustness)")  # ADDED: Note about 10-fold
 
 print("\n⚠️  LIMITATIONS & FUTURE WORK:")
 print("  • Single-city focus limits generalizability")
@@ -1205,6 +1206,7 @@ print("\n🎯 SIGNAL PROCESSING CONTRIBUTION:")
 print("  • Adapted PSNR/SNR metrics for regression evaluation")
 print("  • Fourier analysis revealed dominant periodicities")
 print("  • Bridged urban mobility analysis with signal processing methodologies")
+print("  • Enhanced robustness with 10-fold cross-validation")  # ADDED: Note about 10-fold
 
 print("\n" + "="*80)
 print("✅ COMPREHENSIVE URBAN PLANNING ANALYSIS COMPLETED SUCCESSFULLY!")
@@ -1214,4 +1216,5 @@ print("   for urban planners and policymakers.")
 print("📊 Results use proper regression metrics and are suitable for academic publication.")
 print("🔬 Methodological innovations include signal processing adaptations and")
 print("   comprehensive model interpretability using SHAP analysis.")
+print("📈 Enhanced robustness through 10-fold cross-validation for reliable performance estimation.")
 print("="*80)
