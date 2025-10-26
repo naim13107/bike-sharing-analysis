@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "Bike Sharing Demand Prediction: Machine Learning and Signal Processing Approach"
 authors:
-  - given-names: Naim
+  - given-names: Md.Naim-Ul-Haque
     # You can add more details like:
     # family-names: YourLastName
     # email: your@email.com
