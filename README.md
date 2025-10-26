@@ -20,3 +20,16 @@ git clone https://github.com/naim13107/bike-sharing-analysis.git
 cd bike-sharing-analysis
 pip install -r requirements.txt
 python bike2.py
+
+## 📚 Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@software{naim_bike_sharing_2024,
+  title = {Bike Sharing Demand Prediction: Machine Learning and Signal Processing Approach},
+  author = {Naim},
+  year = {2024},
+  url = {https://github.com/naim13107/bike-sharing-analysis},
+  version = {1.0.0}
+}
