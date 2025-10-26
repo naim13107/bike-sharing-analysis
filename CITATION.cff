@@ -5,7 +5,7 @@ authors:
   - given-names: Md.Naim-Ul-Haque
 
 version: 1.0.0
-doi: 10.5281/zenodo.XXXXXX  # If you get a DOI later
+doi: 10.5281/zenodo.XXXXXX  # If get a DOI later
 date-released: 2024-01-15
 url: "https://github.com/naim13107/bike-sharing-analysis"
 license: MIT
