@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Bike Sharing Demand Prediction: Machine Learning and Signal Processing Approach"
+authors:
+  - given-names: Naim
+    # You can add more details like:
+    # family-names: YourLastName
+    # email: your@email.com
+    # orcid: 0000-0000-0000-0000
+version: 1.0.0
+doi: 10.5281/zenodo.XXXXXX  # If you get a DOI later
+date-released: 2024-01-15
+url: "https://github.com/naim13107/bike-sharing-analysis"
+license: MIT
+keywords:
+  - "machine-learning"
+  - "signal-processing"
+  - "urban-analytics"
+  - "bike-sharing"
+  - "time-series"
