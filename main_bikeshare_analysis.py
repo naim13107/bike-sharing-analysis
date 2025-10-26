@@ -48,20 +48,23 @@ np.random.seed(RANDOM_STATE)
 # ===============================
 # 2️⃣ Enhanced Data Loading with Time Series Support
 # ===============================
+from pathlib import Path
+
+# Path relative to where this script is run
+DATA_PATH = Path(__file__).resolve().parent / "Data" / "day.csv"
+
 try:
-    df = pd.read_csv("E:/Neural B-$/Dataset/bike+sharing+dataset/day.csv")
-    print("✅ Dataset loaded successfully!")
-    
+    df = pd.read_csv(DATA_PATH)
+    print(f"✅ Dataset loaded successfully from: {DATA_PATH}")
+
     # Convert date for proper time series analysis
     if 'dteday' in df.columns:
         df['dteday'] = pd.to_datetime(df['dteday'])
         df = df.sort_values('dteday').reset_index(drop=True)
-        print(f"📅 Time range: {df['dteday'].min()} to {df['dteday'].max()}")
-        
+        print(f"📅 Time range: {df['dteday'].min()} → {df['dteday'].max()}")
+
 except FileNotFoundError:
-    print("❌ File not found. Please check the file path.")
-    # Create sample data for demonstration
-    print("🔄 Creating sample data for demonstration...")
+    print(f"❌ File not found at {DATA_PATH}. Creating sample data for demonstration…")
     np.random.seed(42)
     n_samples = 731
     data = {
@@ -76,7 +79,7 @@ except FileNotFoundError:
         'atemp': np.random.uniform(0, 1, n_samples),
         'hum': np.random.uniform(0, 1, n_samples),
         'windspeed': np.random.uniform(0, 1, n_samples),
-        'cnt': np.random.randint(100, 1000, n_samples)
+        'cnt': np.random.randint(100, 1000, n_samples),
     }
     df = pd.DataFrame(data)
 
