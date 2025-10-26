@@ -1,27 +1,22 @@
-# 🚲 Bike Sharing Demand Prediction - Machine Learning & Signal Processing Analysis
+# Bike Sharing Demand Prediction: Integrated Machine Learning and Signal Processing Approach
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Machine Learning](https://img.shields.io/badge/Machine-Learning-orange)
-![Signal Processing](https://img.shields.io/badge/Signal-Processing-green)
-![Urban Analytics](https://img.shields.io/badge/Urban-Analytics-purple)
+## 📖 Abstract
+This research presents a comprehensive framework combining machine learning with signal processing techniques for bike-sharing demand prediction. The study employs advanced feature engineering, Fourier analysis for periodicity detection, and adapted signal processing metrics (PSNR/SNR) for regression evaluation.
 
-A comprehensive machine learning framework enhanced with signal processing techniques for predicting bike-sharing demand and providing urban planning insights.
+## 🎯 Research Contributions
+- **Novel Feature Engineering**: Temporal dependencies and weather interactions
+- **Signal Processing Integration**: Fourier analysis revealing dominant periodicities
+- **Interpretable AI**: SHAP analysis for model transparency
+- **Urban Planning Applications**: Data-driven policy recommendations
 
-## 📋 Project Overview
+## 📊 Key Results
+- **Best Model**: Gradient Boosting (R² = 0.8685)
+- **Dominant Features**: Rolling 7-day mean (46.64%), comfort index (11.27%)
+- **Periodicities Identified**: 365.5 days (annual), 243.7 days (seasonal)
 
-This project implements an integrated approach combining traditional machine learning with signal processing methodologies to predict bike-sharing demand using the UCI Bike Sharing Dataset.
-
-### 🎯 Key Features
-
-- **Advanced Feature Engineering**: Temporal dependencies, weather interactions
-- **Signal Processing Integration**: Fourier analysis and PSNR/SNR metrics
-- **Comprehensive Model Evaluation**: 7 regression models with statistical testing
-- **Interpretable AI**: SHAP analysis for feature importance
-- **Urban Planning Insights**: Data-driven policy recommendations
-
-## 🚀 Quick Start
-
-1. **Clone the repository**
+## 🚀 Reproduction
 ```bash
 git clone https://github.com/naim13107/bike-sharing-analysis.git
 cd bike-sharing-analysis
+pip install -r requirements.txt
+python bike2.py
