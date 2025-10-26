@@ -10,9 +10,9 @@ This research presents a comprehensive framework combining machine learning with
 - **Urban Planning Applications**: Data-driven policy recommendations
 
 ## 📊 Key Results
-- **Best Model**: Gradient Boosting (R² = 0.8685)
-- **Dominant Features**: Rolling 7-day mean (46.64%), comfort index (11.27%)
-- **Periodicities Identified**: 365.5 days (annual), 243.7 days (seasonal)
+- **Best Model: Gradient Boosting (R² = 0.8706)
+- **Dominant Features: Rolling 7-day mean (46.64%), comfort index (11.27%)
+- **Periodicities Identified: 365.5 days (annual), 243.7 days (seasonal)
 
 ## 🚀 Reproduction
 ```bash
