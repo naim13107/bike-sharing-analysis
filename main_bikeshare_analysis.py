@@ -576,7 +576,6 @@ print(f"   • Total after encoding: {len(available_features)} features")
 X_model = X[selected_numerical_features + selected_categorical_features]
 print(f"✅ Final feature matrix shape: {X_model.shape}")
 
-
 # ===============================
 # 1️⃣1️⃣ Create Enhanced Preprocessing Pipeline
 # ===============================
@@ -671,11 +670,11 @@ def evaluate_baseline_models(X, y):
         if name == 'Simple_Linear' and len(basic_features) > 0:
             X_basic = X[basic_features] if isinstance(X, pd.DataFrame) else X
             pipeline = Pipeline([('model', model)])
-            scores = cross_val_score(pipeline, X_basic, y, cv=10, scoring='r2')  # CHANGED: cv=10
+            scores = cross_val_score(pipeline, X_basic, y, cv=10, scoring='r2')
             baseline_results[name] = np.mean(scores)
         else:
             pipeline = Pipeline([('model', model)])
-            scores = cross_val_score(pipeline, X, y, cv=10, scoring='r2')  # CHANGED: cv=10
+            scores = cross_val_score(pipeline, X, y, cv=10, scoring='r2')
             baseline_results[name] = np.mean(scores)
     
     print("🎯 BASELINE MODEL R² SCORES:")
@@ -722,8 +721,8 @@ def generate_performance_tables(models, X_data, y_data, preprocessor, feature_se
                 ('model', model)
             ])
         
-        # Perform 10-fold cross validation - CHANGED: n_splits=10
-        kf = KFold(n_splits=10, shuffle=True, random_state=RANDOM_STATE)  # CHANGED: n_splits=10
+        # Perform 10-fold cross validation
+        kf = KFold(n_splits=10, shuffle=True, random_state=RANDOM_STATE)
         fold_metrics = {metric: [] for metric in metric_names}
         r2_scores = []
         
@@ -840,10 +839,10 @@ def enhanced_shap_analysis(model, X_processed, feature_names, model_name):
             top_features = feature_importance.head(8)
             
             interpretation_guide = {
-                'temp': "Temperature has strongest positive impact - warmer weather significantly increases bike rentals (r=0.63)",
-                'yr': "Year feature captures 64.4% annual growth trend and broader urban mobility shifts", 
-                'comfort_index': "Combined temperature-humidity comfort metric - optimal conditions boost rentals by 10.6%",
-                'season': "Seasonal patterns show clear summer preference (67.7% higher than winter) and winter decline",
+                'temp': "Temperature has strongest positive impact - warmer weather significantly increases bike rentals",
+                'yr': "Year feature captures annual growth trend and broader urban mobility shifts", 
+                'comfort_index': "Combined temperature-humidity comfort metric - optimal conditions boost rentals",
+                'season': "Seasonal patterns show clear summer preference and winter decline",
                 'weathersit': "Weather conditions directly impact riding comfort and safety - adverse weather reduces demand",
                 'lag': "Temporal dependencies show rental patterns persist across days/weeks",
                 'hum': "Humidity inversely affects comfort - high humidity reduces rentals despite temperature",
@@ -880,7 +879,6 @@ def enhanced_shap_analysis(model, X_processed, feature_names, model_name):
         except:
             print("❌ Permutation importance also failed")
             return None
-
 
 # ===============================
 # 1️⃣8️⃣ UPDATED Main Model Evaluation Execution with 10-FOLD
@@ -1059,18 +1057,7 @@ else:
     feature_importance_shap = None
 
 # ===============================
-# 2️⃣2️⃣ UPDATED Literature Comparison
-# ===============================
-
-# Compare with literature
-if results_original:
-    best_r2 = results_original[best_model_name]['R2']
-    compare_with_literature(best_r2)
-else:
-    print("⚠️ Skipping literature comparison - no results available")
-
-# ===============================
-# 2️⃣3️⃣ Urban Planning Policy Recommendations
+# 2️⃣2️⃣ Urban Planning Policy Recommendations
 # ===============================
 
 print("\n" + "="*80)
@@ -1146,7 +1133,7 @@ except Exception as e:
     generate_policy_recommendations(df, feature_importance_rf)
 
 # ===============================
-# 2️⃣4️⃣ Reproducibility and Limitations Discussion
+# 2️⃣3️⃣ Reproducibility and Limitations Discussion
 # ===============================
 
 print("\n" + "="*80)
@@ -1160,7 +1147,7 @@ print(f"  • scikit-learn: {sklearn.__version__}")
 print(f"  • SHAP: {shap.__version__}")
 print("  • Dataset: UCI Bike Sharing Dataset (Day)")
 print("  • Code available: https://github.com/yourusername/bike-sharing-analysis")
-print("  • Cross-Validation: 10-FOLD (Enhanced robustness)")  # ADDED: Note about 10-fold
+print("  • Cross-Validation: 10-FOLD (Enhanced robustness)")
 
 print("\n⚠️  LIMITATIONS & FUTURE WORK:")
 print("  • Single-city focus limits generalizability")
@@ -1173,7 +1160,7 @@ print("\n🎯 SIGNAL PROCESSING CONTRIBUTION:")
 print("  • Adapted PSNR/SNR metrics for regression evaluation")
 print("  • Fourier analysis revealed dominant periodicities")
 print("  • Bridged urban mobility analysis with signal processing methodologies")
-print("  • Enhanced robustness with 10-fold cross-validation")  # ADDED: Note about 10-fold
+print("  • Enhanced robustness with 10-fold cross-validation")
 
 print("\n" + "="*80)
 print("✅ COMPREHENSIVE URBAN PLANNING ANALYSIS COMPLETED SUCCESSFULLY!")
@@ -1185,4 +1172,3 @@ print("🔬 Methodological innovations include signal processing adaptations and
 print("   comprehensive model interpretability using SHAP analysis.")
 print("📈 Enhanced robustness through 10-fold cross-validation for reliable performance estimation.")
 print("="*80)
-
