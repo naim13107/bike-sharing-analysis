@@ -881,42 +881,6 @@ def enhanced_shap_analysis(model, X_processed, feature_names, model_name):
             print("❌ Permutation importance also failed")
             return None
 
-# ===============================
-# 1️⃣7️⃣ Literature Comparison Function
-# ===============================
-
-def compare_with_literature(your_r2_score):
-    """Compare results with existing literature"""
-    print("\n" + "="*80)
-    print("📚 COMPARISON WITH EXISTING LITERATURE")
-    print("="*80)
-    
-    literature_comparison = {
-        'Faghih-Imani et al. (2017)': 0.82,
-        'Yoon et al. (2012)': 0.76,
-        'Li et al. (2015)': 0.85,
-        'Kaltenbrunner et al. (2016)': 0.79,
-        'Our Study (Gradient Boosting)': your_r2_score
-    }
-    
-    comparison_df = pd.DataFrame(list(literature_comparison.items()), 
-                               columns=['Study', 'R² Score'])
-    comparison_df = comparison_df.sort_values('R² Score', ascending=False)
-    
-    print("📊 LITERATURE COMPARISON (R² SCORES):")
-    print(comparison_df.to_string(index=False))
-    
-    # Position your work
-    rank = (comparison_df['R² Score'] > your_r2_score).sum() + 1
-    total = len(comparison_df)
-    print(f"\n🎯 POSITIONING: Our work ranks {rank}/{total} in predictive performance")
-    
-    if your_r2_score == comparison_df['R² Score'].max():
-        print("🏆 ACHIEVEMENT: State-of-the-art performance achieved!")
-    elif your_r2_score >= 0.85:
-        print("✅ EXCELLENT: Competitive performance with top literature results")
-    elif your_r2_score >= 0.80:
-        print("📈 GOOD: Solid performance comparable to established methods")
 
 # ===============================
 # 1️⃣8️⃣ UPDATED Main Model Evaluation Execution with 10-FOLD
@@ -1221,3 +1185,4 @@ print("🔬 Methodological innovations include signal processing adaptations and
 print("   comprehensive model interpretability using SHAP analysis.")
 print("📈 Enhanced robustness through 10-fold cross-validation for reliable performance estimation.")
 print("="*80)
+
